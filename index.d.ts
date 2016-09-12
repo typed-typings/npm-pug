@@ -23,7 +23,7 @@ declare namespace pug {
      * that can be used client side along with the Pug runtime.
      * You should only use this method if you need dependencies to implement something like watching for changes to the Pug files.
      */
-    export function compileClientWithDependenciesTracked(template: string, options?: any): {
+    export function compileClientWithDependenciesTracked(template: string, options?: Options): {
         body: string;
         dependencies: string[];
     };
@@ -31,7 +31,7 @@ declare namespace pug {
     /**
      * Compile a Pug template file to a string of JavaScript that can be used client side along with the Pug runtime.
      */
-    export function compileFileClient(path: string, options?: { name: string }): string;
+    export function compileFileClient(path: string, options?: Options): string;
 
     /**
      * Compile a Pug template and render it with locals to html string.
