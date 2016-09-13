@@ -34,18 +34,44 @@ declare namespace pug {
   export function compileFileClient(path: string, options?: Options): string;
 
   /**
-   * Compile a Pug template and render it with locals to html string.
+   * Compile a Pug template and render it without locals to html string.
    */
-  export function render(template: string, options?: Options & AnyObject): string;
+  export function render(template: string): string;
+  /**
+   * Compile a Pug template and render it with locals to html string.
+   * @param {(Options & LocalsObject)} options Pug Options and rendering locals
+   */
+  export function render(template: string, options: Options & LocalsObject): string;
+  /**
+   * Compile a Pug template and render it without locals to html string.
+   */
   export function render(template: string, callback: (err: Error | void, res: string) => void): void;
-  export function render(template: string, options: Options & AnyObject, callback: (err: Error | void, res: string) => void): void;
-
   /**
    * Compile a Pug template from a file and render it with locals to html string.
+   * @param {(Options & LocalsObject)} options Pug Options and rendering locals
+   * @param {((err: Error | void, res: string) => void)} callback Node.js-style callback receiving the rendered results. This callback is called synchronously.
    */
-  export function renderFile(path: string, options: Options & AnyObject): string;
+  export function render(template: string, options: Options & LocalsObject, callback: (err: Error | void, res: string) => void): void;
+
+  /**
+   * Compile a Pug template from a file and render it without locals to html string.
+   */
+  export function renderFile(path: string): string;
+  /**
+   * Compile a Pug template from a file and render it with locals to html string.
+   * @param {(Options & LocalsObject)} options Pug Options and rendering locals
+   */
+  export function renderFile(path: string, options: Options & LocalsObject): string;
+  /**
+   * Compile a Pug template from a file and render it without locals to html string.
+   */
   export function renderFile(path: string, callback: (err: Error | void, res: string) => void): void;
-  export function renderFile(path: string, options: Options & AnyObject, callback: (err: Error | void, res: string) => void): void;
+  /**
+   * Compile a Pug template from a file and render it with locals to html string.
+   * @param {(Options & LocalsObject)} options Pug Options and rendering locals
+   * @param {((err: Error | void, res: string) => void)} callback Node.js-style callback receiving the rendered results. This callback is called synchronously.
+   */
+  export function renderFile(path: string, options: Options & LocalsObject, callback: (err: Error | void, res: string) => void): void;
 
   export interface Options {
     /** The name of the file being compiled. Used in exceptions, and required for relative includes and extends. Defaults to 'Pug'. */
@@ -84,7 +110,7 @@ declare namespace pug {
   /** 
    * An object that can have multiple properties of any type.
    */
-  export interface AnyObject {
+  export interface LocalsObject {
     [propName: string]: any;
   }
 }
