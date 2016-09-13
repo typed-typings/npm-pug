@@ -36,12 +36,16 @@ declare namespace pug {
   /**
    * Compile a Pug template and render it with locals to html string.
    */
-  export function render(template: string, options?: Options & any, fn?: (err: Error | void, res: string) => void): string;
+  export function render(template: string, options?: Options & AnyObject): string;
+  export function render(template: string, callback: (err: Error | void, res: string) => void): void;
+  export function render(template: string, options: Options & AnyObject, callback: (err: Error | void, res: string) => void): void;
 
   /**
    * Compile a Pug template from a file and render it with locals to html string.
    */
-  export function renderFile(path: string, options?: Options & any, fn?: (err: Error | void, res: string) => void): string;
+  export function renderFile(path: string, options: Options & AnyObject): string;
+  export function renderFile(path: string, callback: (err: Error | void, res: string) => void): void;
+  export function renderFile(path: string, options: Options & AnyObject, callback: (err: Error | void, res: string) => void): void;
 
   export interface Options {
     /** The name of the file being compiled. Used in exceptions, and required for relative includes and extends. Defaults to 'Pug'. */
@@ -70,9 +74,18 @@ declare namespace pug {
     name?: string
   }
 
-  /** A function that can be use to render html string of compiled template. */
+   /** 
+   * A function that can be use to render html string of compiled template.
+   */
   export interface TemplateFunction {
     (locals?: any): string;
+  }
+
+  /** 
+   * An object that can have multiple properties of any type.
+   */
+  export interface AnyObject {
+    [propName: string]: any;
   }
 }
 
