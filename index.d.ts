@@ -47,7 +47,7 @@ declare namespace pug {
    */
   export function render(template: string, callback: (err: Error | void, res: string) => void): void;
   /**
-   * Compile a Pug template from a file and render it with locals to html string.
+   * Compile a Pug template and render it with locals to html string.
    * @param {(Options & LocalsObject)} options Pug Options and rendering locals
    * @param {((err: Error | void, res: string) => void)} callback Node.js-style callback receiving the rendered results. This callback is called synchronously.
    */
